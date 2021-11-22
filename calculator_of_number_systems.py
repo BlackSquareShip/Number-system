@@ -13,6 +13,7 @@
 alpha = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c',
 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+count = 0
 
 def letter_to_number(letter):
     letter = str(letter)
@@ -48,4 +49,10 @@ base_need = input('Введите основание, в которое треб
 while not base_need.isdigit() or int(base_need) <= 1:
     base_need = input('Основание введено некорректно, попробуйте снова:')
 base_need = int(base_need)
-print(transfer_from_ten(transfer_in_ten(num, base_num), base_need))
+for i in range(len(num)):
+    if int(letter_to_number(num[i])) <= base_num:
+        count += 1
+if count == len(num):
+    print(transfer_from_ten(transfer_in_ten(num, base_num), base_need))
+else:
+    print('Указано невозможное основание')
