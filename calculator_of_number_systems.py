@@ -23,9 +23,9 @@ def letter_to_number(letter):
 def transfer_from_ten(num, base_need):
     new_num =''
     while num > 0:
-        new_num += str(num % base_need)
+        new_num += alpha[num % base_need]
         num //= base_need
-    return int(new_num[::-1])
+    return new_num[::-1]
 
 def transfer_in_ten(num, base_num):
     num = list(num)
@@ -41,7 +41,7 @@ num = input('Введите число: ')
 while not num.isalnum():
     num = input('Число введено некорректно, попробуйте снова:')
 base_num = input('Введите основание числа: ')
-while not base_num.isdigit() or base_num <= 1:
+while not base_num.isdigit() or int(base_num) <= 1:
     base_num = input('Основание введено некорректно, попробуйте снова:')
 base_num = int(base_num)
 base_need = input('Введите основание, в которое требуется перевести: ')
