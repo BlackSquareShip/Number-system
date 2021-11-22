@@ -10,13 +10,12 @@
 с конца.
 5. Profit!
 '''
-
+alpha = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c',
+'d', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+'s', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 def letter_to_number(letter):
     letter = str(letter)
-    alpha = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c',
-     'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
-      's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
     for i in range(len(alpha)):
         if alpha[i] == letter.lower():
             return alpha.index(alpha[i])
@@ -39,6 +38,14 @@ def transfer_in_ten(num, base_num):
     return int(new_num)
 
 num = input('Введите число: ')
-base_num = int(input('Введите основание числа: '))
-base_need = int(input('Введите основание, в которое требуется перевести: '))
+while not num.isalnum():
+    num = input('Число введено некорректно, попробуйте снова:')
+base_num = input('Введите основание числа: ')
+while not base_num.isdigit() or base_num <= 1:
+    base_num = input('Основание введено некорректно, попробуйте снова:')
+base_num = int(base_num)
+base_need = input('Введите основание, в которое требуется перевести: ')
+while not base_need.isdigit() or int(base_need) <= 1:
+    base_need = input('Основание введено некорректно, попробуйте снова:')
+base_need = int(base_need)
 print(transfer_from_ten(transfer_in_ten(num, base_num), base_need))
